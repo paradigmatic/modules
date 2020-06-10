@@ -34,7 +34,7 @@ as.module.function <- function(x, ...) {
 #' @export
 #' @rdname modulecoerce
 as.module.character <- function(x, topEncl = baseenv(), reInit = TRUE, ...,
-                                envir = parent.frame()) {
+                                envir = parent.frame(), encoding="unknown") {
   stopifnot(length(x) == 1)
 
   dirAsModule <- function(x, topEncl, ...) {
@@ -45,7 +45,7 @@ as.module.character <- function(x, topEncl = baseenv(), reInit = TRUE, ...,
   }
 
   fileAsModule <- function(x, topEncl, ...) {
-    do.call(module, list(parse(x, ...), topEncl, envir))
+    do.call(module, list(parse(x, ..., encoding=encoding), topEncl, envir))
   }
 
   urlAsModule <- function(x, topEncl, ...) {

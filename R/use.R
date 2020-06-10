@@ -66,12 +66,12 @@
 #' m5 <- use(tempdir())
 #' m5
 #' }
-use <- function(module, ..., attach = FALSE, reInit = TRUE, where = parent.frame()) {
+use <- function(module, ..., attach = FALSE, reInit = TRUE, where = parent.frame(), encoding="unknown") {
 
   moduleName <- as.character(substitute(module))
   module <- useTryFindModule(module, moduleName, where, match.call())
   name <- if (is.character(module)) module else moduleName
-  module <- as.module(module, reInit = reInit, envir = where)
+  module <- as.module(module, reInit = reInit, envir = where, encoding=encoding)
   module <- useGetSelection(module, match.call(expand.dots = TRUE))
 
   if (attach) addDependency(
