@@ -34,7 +34,11 @@ as.module.function <- function(x, ...) {
 #' @export
 #' @rdname modulecoerce
 as.module.character <- function(x, topEncl = baseenv(), reInit = TRUE, ...,
+
                                 envir = parent.frame(), encoding="unknown") {
+
+ print( paste( "AS MODULE CHAR  encoding: ", encoding ) )#REMOVE THIS
+    
   stopifnot(length(x) == 1)
 
   dirAsModule <- function(x, topEncl, ...) {

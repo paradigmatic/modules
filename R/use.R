@@ -68,6 +68,8 @@
 #' }
 use <- function(module, ..., attach = FALSE, reInit = TRUE, where = parent.frame(), encoding="unknown") {
 
+  print( paste( "USE encoding: ", encoding ) )#REMOVE THIS
+    
   moduleName <- as.character(substitute(module))
   module <- useTryFindModule(module, moduleName, where, match.call())
   name <- if (is.character(module)) module else moduleName
